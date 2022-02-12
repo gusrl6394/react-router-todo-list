@@ -11,7 +11,7 @@ describe('<Input />', () => {
         const input = screen.getByDisplayValue('default value');
         expect(input).toBeInTheDocument();
 
-        //expect(container).toMatchSnapshot();
+        // expect(container).toMatchSnapshot();
     });
 
     it('renders placeholder correctly', () => {
