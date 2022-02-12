@@ -5,11 +5,15 @@ import {ToDoListContext} from 'Contexts';
 import {Button} from "Components/Button";
 import {Input} from "Components/Input";
 
+interface Props {
+    readonly onAdd?: () => void;
+}
+
 const Container = Styled.div`
     display : flex;
 `;
 
-export const InputContainer = () => {
+export const InputContainer = ({onAdd}: Props) => {
     const [toDo, setToDo] = useState('');
     const {addToDo} = useContext(ToDoListContext);
 
@@ -20,6 +24,9 @@ export const InputContainer = () => {
                     onClick={()=>{
                                 addToDo(toDo);
                                 setToDo('');
+                                if(toDo && typeof onAdd === 'function'){
+                                    onAdd();
+                                }
                             }}
             />
         </Container>
