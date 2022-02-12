@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Styled from 'styled-components';
+
+import {ToDoListProvider} from 'Contexts';
+import { InputContainer, ToDoList } from 'Components';
+
+const Container = Styled.div`
+  min-height: 100vh;
+  background-color: #EEEEEE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+const Contents = Styled.div`
+  display: flex;
+  background-color: #FFFFFF;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ToDoListProvider>
+        <Container>
+          <Contents>
+            <ToDoList/>
+            <InputContainer/>
+          </Contents>
+        </Container>
+      </ToDoListProvider>
   );
 }
 
